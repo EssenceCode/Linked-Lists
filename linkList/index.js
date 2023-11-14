@@ -19,10 +19,23 @@ function LinkedList(val) {
 
         return append(value, list.nextNode);
     };
+
+    const prepend = (value, obj = head) => {
+        const list = obj;
+        if(list.value === null || list.value !== null) {
+            list.value = value;
+
+            return list;
+        };
+        
+        return prepend(value, list.nextNode);
+    };
   
 
     return {
         append,
+        prepend,
+        getList
     }
 };
 
