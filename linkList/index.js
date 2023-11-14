@@ -19,7 +19,6 @@ function LinkedList(val) {
 
         return append(value, list.nextNode);
     };
-
     const prepend = (value, obj = head) => {
         const list = obj;
         if(list.value === null || list.value !== null) {
@@ -30,13 +29,23 @@ function LinkedList(val) {
         
         return prepend(value, list.nextNode);
     };
-  
+   
+    const size = (list = head, counter = 1) => {
+        if(list.nextNode === null) {
+
+            return counter;
+        };
+    
+        return size(list.nextNode, counter + 1);
+    };
+
 
     return {
         append,
         prepend,
+        size,
         getList
     }
 };
 
-const list = LinkedList();
+const list = LinkedList(1);
