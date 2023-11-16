@@ -6,28 +6,28 @@ function Node(value = null, nextNode = null) {
 };
 
 function LinkedList(val) {
-    const root = Node(val);
-    
+    const initialRoot = Node(val);
+    let root = initialRoot;
+
+    const getRoot = () => root
+
     const append = (value, obj = root) => {
         const list = obj;
         if(list.nextNode === null) {
             list.nextNode = Node(value, list.nextNode);
 
-            return list;
+            return true;
         };
       
         return append(value, list.nextNode);
     };
   
-    const prepend = (value, obj = root) => {
-        const list = obj;
-        if(list.value === null || list.value !== null) {
-            list.value = value;
-
-            return list;
-        };
-       
-        return prepend(value, list.nextNode);
+    const prepend = (value) => {
+        const newNode = Node(value, root);
+        
+        root = newNode;
+        
+        return true;
     };
     
     const size = (list = root, counter = 1) => {
@@ -86,7 +86,7 @@ function LinkedList(val) {
       
       return false;
     };
-    // find(value) returns the index of the node containing value, or null if not found.
+   
     const find = (value, list = root) => {
         if(list.value === value) return list;
         if(list.nextNode) return find(value, list.nextNode);
@@ -104,6 +104,7 @@ function LinkedList(val) {
         pop,
         contains,
         find,
+        getRoot,
         // toString,
     };
 };
