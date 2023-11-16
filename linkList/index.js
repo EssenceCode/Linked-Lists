@@ -80,6 +80,15 @@ function LinkedList(val) {
 
         return pop(list.nextNode, current)
     }; 
+ 
+    const contains = (value,list = root) => {
+      if(list.value === value) return true;
+      if(list.nextNode) return contains(value,list.nextNode);
+      
+      return false;
+    };
+    // find(value) returns the index of the node containing value, or null if not found.
+
     return {
         append,
         prepend,
@@ -87,6 +96,7 @@ function LinkedList(val) {
         head,
         tail,
         pop,
+        contains,
         getList,
         
     }
