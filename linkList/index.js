@@ -32,23 +32,23 @@ function LinkedList(val) {
     };
     
     const size = (list = root, counter = 1) => {
-        if(list.nextNode === null) {
+        if(list.nextNode) {
 
-            return counter;
+            return size(list.nextNode, counter + 1);
         };
       
-        return size(list.nextNode, counter + 1);
+        return counter;
     };
     
     const head = (list = root) => list;
    
     const tail = (list = root) => {
-        if(list.nextNode === null) {
-           
-            return list;
+        if(list.nextNode) {
+
+            return tail(list.nextNode);
         };
        
-        return tail(list.nextNode);
+        return list;
     };
   
     const at = (index,  counter = 1, list = root) => {
@@ -69,16 +69,16 @@ function LinkedList(val) {
     const pop = (list = root, previous = list) => {
         let current = null;
 
-        if(list.nextNode === null) {
-            current = previous;
-            current.nextNode = null;
+        current = list;
+        if(list.nextNode) {
             
-            return true;
+            return pop(list.nextNode, current)
         };
 
-        current = list;
-
-        return pop(list.nextNode, current)
+        current = previous;
+        current.nextNode = null;
+        
+        return true;
     }; 
  
     const contains = (value,list = root) => {
@@ -88,7 +88,14 @@ function LinkedList(val) {
       return false;
     };
     // find(value) returns the index of the node containing value, or null if not found.
+    const find = (value, list = root) => {
+        if(list.value === value) return list;
+        if(list.nextNode) return find(value, list.nextNode);
 
+        return null;
+    };
+
+   
     return {
         append,
         prepend,
@@ -97,6 +104,8 @@ function LinkedList(val) {
         tail,
         pop,
         contains,
+        find,
+        // toString,
         getList,
         
     }
@@ -107,14 +116,14 @@ const list = LinkedList(1);
 list.append(2)
 list.append(3)
 list.append(4)
-list.append(5)
-list.append(6)
-list.append(7)
-list.append(8)
-list.append(9)
-list.append(10)
-list.append(11)
-list.append(12)
+// list.append(5)
+// list.append(6)
+// list.append(7)
+// list.append(8)
+// list.append(9)
+// list.append(10)
+// list.append(11)
+// list.append(12)
 
 
 
