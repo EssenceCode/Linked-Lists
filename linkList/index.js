@@ -7,8 +7,7 @@ function Node(value = null, nextNode = null) {
 
 function LinkedList(val) {
     const root = Node(val);
-    const getList = () => root;
-
+    
     const append = (value, obj = root) => {
         const list = obj;
         if(list.nextNode === null) {
@@ -106,9 +105,7 @@ function LinkedList(val) {
         contains,
         find,
         // toString,
-        getList,
-        
-    }
+    };
 };
 
 const list = LinkedList(1);
