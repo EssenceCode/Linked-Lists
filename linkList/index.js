@@ -9,8 +9,6 @@ function LinkedList(val) {
     const initialRoot = Node(val);
     let root = initialRoot;
 
-    const getRoot = () => root
-
     const append = (value, obj = root) => {
         const list = obj;
         if(list.nextNode === null) {
@@ -125,6 +123,25 @@ function LinkedList(val) {
       
         return insertAt(value, index, list.nextNode,  current, counter + 1);;
     };
+    
+    const removeAt = (index, list = root, previous = list, counter = 0) => {
+        const current = list;
+
+        if(counter === index && current === null || index === 0) {
+
+             return "invalid index";
+        };
+
+        if(counter === index) {
+            const prevNode = previous;
+            prevNode.nextNode = current.nextNode;
+
+
+            return true;
+        };
+
+        return removeAt(index, list.nextNode, current, counter + 1)
+    };
 
     return {
         append,
@@ -138,26 +155,25 @@ function LinkedList(val) {
         find,
         toString,
         insertAt,
-        // removeAt,
-        getRoot,
+        removeAt,
     };
 };
 
-const list = LinkedList(1);
-// list.prepend("head");
+const list = LinkedList("head");
+list.prepend(1);
 list.append(2);
 list.append(3);
 list.append(4);
-// list.append(5);
-// list.append(6);
-// list.append(7);
-// list.append(8);
-// list.append(9);
-// list.append(10);
-// list.append(11);
-// list.append(12);
-// list.append(13);
-// list.append("tail");
+list.append(5);
+list.append(6);
+list.append(7);
+list.append(8);
+list.append(9);
+list.append(10);
+list.append(11);
+list.append(12);
+list.append(13);
+list.append("tail");
 
 
 
