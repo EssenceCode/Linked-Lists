@@ -159,21 +159,5 @@ function LinkedList(val) {
     };
 };
 
-const list = LinkedList("head");
-list.prepend(1);
-list.append(2);
-list.append(3);
-list.append(4);
-list.append(5);
-list.append(6);
-list.append(7);
-list.append(8);
-list.append(9);
-list.append(10);
-list.append(11);
-list.append(12);
-list.append(13);
-list.append("tail");
-
 
 
