@@ -1,0 +1,17 @@
+h1 {
+    text-align: center;
+}
+
+.instruction {
+    display: grid;
+    justify-content: center;
+}
+
+ol {
+    display: grid;
+    gap: 5px;
+    font-size: 2rem;
+}
+p {
+    font-size: 2rem;
+}
