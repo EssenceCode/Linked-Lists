@@ -50,16 +50,16 @@ function LinkedList(val) {
         return list;
     };
   
-    const at = (index,  counter = 1, list = root) => {
+    const at = (index,  counter = 0, list = root) => {
        
        if(index === counter) {
 
-        return list;
+            return list;
        };
      
        if(index !== counter && list.nextNode === null) {
 
-        return "index does not exist";
+            return "index does not exist";
        };
       
        return at(index, counter + 1, list.nextNode);
@@ -93,35 +93,48 @@ function LinkedList(val) {
 
         return null;
     };
+  
+    const toString = (list = root, str = "") => {
+        if(list.nextNode) {
+            
+            return toString(list.nextNode, str.concat(`${list.value} => `));
+        };
 
-   
+        return str.concat(`${list.value} => null`);
+    };
+
     return {
         append,
         prepend,
         size,
         head,
         tail,
+        at,
         pop,
         contains,
         find,
+        toString,
+        insertAt,
+        // removeAt,
         getRoot,
-        // toString,
     };
 };
 
 const list = LinkedList(1);
-
-list.append(2)
-list.append(3)
-list.append(4)
-// list.append(5)
-// list.append(6)
-// list.append(7)
-// list.append(8)
-// list.append(9)
-// list.append(10)
-// list.append(11)
-// list.append(12)
+// list.prepend("head");
+list.append(2);
+list.append(3);
+list.append(4);
+// list.append(5);
+// list.append(6);
+// list.append(7);
+// list.append(8);
+// list.append(9);
+// list.append(10);
+// list.append(11);
+// list.append(12);
+// list.append(13);
+// list.append("tail");
 
 
 
