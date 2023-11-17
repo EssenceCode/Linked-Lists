@@ -103,6 +103,29 @@ function LinkedList(val) {
         return str.concat(`${list.value} => null`);
     };
 
+    const insertAt = (value, index, list = root, previous = list, counter = 0) => {
+        const current = list;
+
+        if(counter === index) {
+            if(index === 0) {
+                const node = Node(value, previous);
+
+                root = node;
+                
+                return true;
+            };
+
+            const prevNode = previous;
+            const node = Node(value, previous.nextNode);
+         
+            prevNode.nextNode = node;
+            
+            return true;
+        };
+      
+        return insertAt(value, index, list.nextNode,  current, counter + 1);;
+    };
+
     return {
         append,
         prepend,
