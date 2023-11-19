@@ -6,8 +6,7 @@ function Node(value = null, nextNode = null) {
 };
 
 function LinkedList(val) {
-    const initialRoot = Node(val);
-    let root = initialRoot;
+    let root = Node(val);
 
     const append = (value, obj = root) => {
         const list = obj;
@@ -85,9 +84,9 @@ function LinkedList(val) {
       return false;
     };
    
-    const find = (value, list = root) => {
-        if(list.value === value) return list;
-        if(list.nextNode) return find(value, list.nextNode);
+    const find = (value, list = root, counter = 0) => {
+        if(list.value === value) return counter;
+        if(list.nextNode) return find(value, list.nextNode, counter + 1);
 
         return null;
     };
@@ -158,6 +157,3 @@ function LinkedList(val) {
         removeAt,
     };
 };
-
-
-
